@@ -7,6 +7,10 @@ Day 1: Introduction to Ansible and Getting Started
 - Installing Ansible on different platforms.
 - IDE(VS Code) and Plugin configuration.
 
+- ![image](https://github.com/user-attachments/assets/5c5dc1b3-9c43-43a5-8ab8-c87218f24ffd)
+Ansible is a automation platform  where it can help for provisioning,configuration,deployment(CI/CD) & Network Automation.
+in terms of provisioning creating infrastructure,creating ec2 instances,creating platform,interms of configuration it can help for life of devops engineer or sys admin by managing configuration 100's of vm.it can usefull for deployment phase and network automations.
+
 Day 2: Ansible Adhoc Commands
 
 - Passwordless Authentication
