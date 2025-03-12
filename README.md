@@ -26,6 +26,36 @@ ssh -copy -id there are two ways 1 by password and ssh key for the first time.wh
 
 Because in some organizaation block passwordelss authentication
 
+Lets create 2 Ec2 Instance and different type of approach one is ssh and password
+
+Step 1 - ssh way--
+
+ssh-copy-id -f "-o IdentityFile <PATH TO PEM FILE>" ubuntu@<INSTANCE-PUBLIC-IP> command for terminal and fill the pem files and instance ip address and click yes and exectute the command whatever it mentioned  so Now connected after that use this command SSH -ubuntu @IPAddress now it will connected to from our laptop to the EC2 Instances... SO thi ssh key
+
+Step 2 -- Password way
+
+Go to the 2nd instances created and connect to ssh -i <Path of the keypair> Ubantu@IPAddreess then yes now enter sudo vim /etc/ssh/sshd_config.d/60-cloudimg-settings.conf just say Yes in password authentication.. so in any organization if they are not using EC2 instance so we can give command 
+sudo vim  /etc/ssh/ and in that u can able to sshd_Config then enter with  sudo vim /etc/ssh/sshd_config in this file u will field called password authectication commented so go and uncommnet that then we need to restart that using sudo systemctl restart ssh so we need to give password for cnnect using sudp passwd ubuntu enter password now log out
+Then ssh-copy-id Ubuntu @IPAddress then we need to enter the password and again ssh ubuntu @IPADrress now connected 
+
+With these we have benifis to runn any script using YAML OR Adhoc commands of having ansible we can able to install or whatever for manage nodes also
+
+How ansible know these will be my control nodes so there is a way that's called ansible Inventory actually its  a file we need to provide a filed we need to puth the User and the ipaddress.
+
+INvertory is heart of the Ansible---Because it will tell ur ansible control node to which servers it has to talk that is what are ur ansible manage nodes.What is the externsion of invertory it can either write in Yaml format or .Ini extension or invertory.ini whatever the extensionshould .ini(dot.ini)
+If you dont want to provide invertory file everytime go to the file called /etc/ansible/hosts if its not there create and store the server if you dont provide any ini file that will take automaticallly....So what is the recommended approach YAML?INI 
+
+eg. vim Invertory.ini
+--- ansible -i inventory.ini -m ping all ---so all- the server in the invertory files
+--- ansible i inventory.ini -m shell -a " apt install openjdk" all
+---  ansible -i inventory.ini -m ping ubuntu@IPAddress ---> If u want to 1 server or particular u can mention the server with ubuntu
+
+GROUPING THE SERVERS____
+___
+So if we have multiple server like 5 db and 4 app server can we grp that server for db and app Yes... for that ![image](https://github.com/user-attachments/assets/446a9045-f29f-497f-8da8-61b4b59c52fc)
+now asusual same command  ansible -i inventory.ini -m ping DB istead of all we need to mention what grp we need to run for eg; DB
+So for simple Code or simple task like installing apache server,createing files on targetting server,restarting servers,or installing node server we can use adhoc commands....FOr long or complext for eg; terraform,CFT Advantage is resuable ,sharable,Github,collabrable
+
 Day 3: Writing Your First Ansible Playbook
 
 - Understanding YAML basics and Ansible playbook structure.
