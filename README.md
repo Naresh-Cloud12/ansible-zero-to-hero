@@ -19,6 +19,13 @@ Day 2: Ansible Adhoc Commands
 - Examples of common Adhoc commands for system management tasks.
 - Exploring the power of Adhoc commands for quick tasks.
 
+  If a devops want to install ngnix for multiple machine through YML / Adhoc commands in control Node it will instruct that to manage nodes also it will be blocked bcz of authentication so need to know Password or SSH Keys.That is what mentioned in Diagram,,,,![image](https://github.com/user-attachments/assets/6e747a63-cfed-4075-9bb2-25d4888f0b64)
+
+Instead we setup passwordless authentication between ansible control node and manage node it will execute the instruction but we need passwordless authentication should be there so what it is ---It is a mechanisim where u tell the vm for eg a and b. Using the passwordless authenction to B anytime if u getting any instruction VM from A do not ask access for A allow the Access If it tried to coneect give access. For that we have to Initially only for the first we need to provide the password or PEM File from next time it wonts ask password like that.Anyone can connect. So the core ways is the command 
+ssh -copy -id there are two ways 1 by password and ssh key for the first time.whatever the organization is used.
+
+Because in some organizaation block passwordelss authentication
+
 Day 3: Writing Your First Ansible Playbook
 
 - Understanding YAML basics and Ansible playbook structure.
