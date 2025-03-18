@@ -84,12 +84,105 @@ How to convert ansible playook to role use the galaxy command ![image](https://g
 
 I explained this In First Class where if something is already available the thing that you are trying to do if it is already available on the target machine or the manage nodes anible will not execute that again if you're taking shell script or python for an example what happens with shell script if you're telling shell script to create a directory even though the directory is present okay for example if I do mkd ABC okay now ABC folder is available if I again do mkd ABC shell script will fail or the shell command will fail this nature is not called as itm poent whereas if you do the same thing with anel create a folder once and create the folder again anible will not create the folder because it says the folder is already available I don't have to create it this nature is called as item poent which is very important characteristic of anible that's why here you can see that the number of tasks are executed three but nothing is changed on the target machine so now let's connect to one of the ec2 instance and let's delete that HTM file let's see if an is going to create it or not that way we can confirm our roles are working right previously the configuration was already there so it did not create anything so let's take manage node one and uh connect let's use the E to instance connect I'll take the pseudo uh user and 
 
-Day 5: Deep Dive into Ansible Roles with Demo
+Day 5: Deep Dive into Ansible Roles with Demo(( Watch the 20 minutes from start u can understand how github creation nd rest)))
 
 - Ansible Galaxy - Exploring pre-built Ansible roles.
 - Ansible Galaxy - Importing and Installing roles.
 - DEMO: Advanced usage of Ansible roles with a practical example project.
 - Best practices for organizing roles and playbook structure.
+
+   I'm also going to explain how to publish your anible roles onto the anible Galaxy this is very very important
+03:03
+
+because as a devop enger you write some anable playbooks and you might want to share it with other people in your organization outside your organization so that is done again using anible Galaxy we will learn that in this video we also have a demo where I'm going to show you if you are given a task to write a complicated configuration management task using anible how you can effectively use anible Galaxy to use some existing roles in the anable Galaxy server and how you can make your life as a devops engineer
+03:42
+
+simple you almost don't have to write code most of the times because most of the anible related modules task roles are already published to anible Galaxy so please watch this video till the end it's going to be very interesting so in the last class we had a glimpse of this website galaxy. an.
+04:07
+
+com where I've explained that anible Galaxy can be understood as a Marketplace for anible roles what does that mean in anible Galaxy you have thousands of ansible roles if you just go to the rool section you can see thousands of anible roles that are written and published by different devops in iners and system administrators for example if I am given a task let's say that I'm given a task to write an anable playbook for installation and configuration of Docker at the first site this might look very simple to you installing and
+04:52
+
+configuring Docker okay it's very easy but what if your anible control node talks to different manage nodes and you have to install Docker on all of these manage nodes where one of the manage node is using Red Hat Linux one of the manage node is maybe using Debian one of the manage node is using ubu one of the manage node is using Alpine right similarly one might be using windows so in each of these virtual machines the command that you use to install Docker changes the command that you use to create a Docker
+05:41
+
+user changes the command that you use to restart your Docker service might change so the complexity of the anable Playbook will go high when you have different kinds of configuration that's the whole purpose of anible right the configuration management where you you have different kinds of virtual machines even the simple things such as installation of Docker the complexity can be high because you have to handle different uh conditions in your anable playbook if the virtual machine is Red Hat then perform 1 2 3 four five tasks you know
+06:20
+
+if the virtual machine is Debian then perform different kind of tasks if the virtual machine is uban to you need to change the task so the number of tasks in your playbooks go High and the conditionals that you use also goes high so this is where instead of writing anable Playbook or anible role what you can do because Docker is a pretty common task first thing that you have to do is go to anible Galaxy and search and see if there is some role that suits your requirement I'll just search for Docker and I can see that okay there is a
+06:58
+
+anable role Docker for Linux and if I click on it I can read the documentation okay it says the role is tested on uban to Debian red hat so it is tested on multiple which suits most of my requirement and I can also look into the GitHub repository which hosts the source code for this role so I can also look at the GitHub repository and see the standard of the code that is written I can go to the task folder and I can see you know if I can actually trust this author or not so this is how anable roles can help you instead of writing common task if
+07:44
+
+you are lucky you might also find some tasks that are very unique to your organization but someone somewhere might have faced the similar requirement and you have a similar role in the anible Galaxy so like I explained in the last class this is the major advantage of anable roles it will bring modularity to your code right it will bring readability to your code and along with that you can also share the anible roles within your organization and outside your organization using anible Galaxy now saying all this abishek how
+08:26
+
+do I actually use the roles from this right if it is Docker Hub which is very similar to anible Galaxy right as a devop iner if you already know what is dockerhub it's similar to anible Galaxy where it's a Marketplace for Docker images you have thousands of Docker images and you can use the images using the docker CLI right I can use the docker CLI commands like Docker build Docker push Docker pull similarly for anible you you have something called as anible Galaxy just like for Docker Hub you have the docker C for anible Galaxy you have
+09:09
+
+this CLI utility called anible Galaxy most likely you will get the anible Galaxy installed along with your anible itself you can just search for anible Galaxy minus H you will see that you know it says it can be used for two major activities one is for collections and one is for rules exactly what you see here as well you know you have collections and roles at this point of time we are not discussing about collections our focus is roles so you can simply say anible Galaxy Ro minus H so what does it say it says that one
+09:57
+
+is it can do in it initial ization of a role which we saw in the last class where we created a role called httpd using anible Galaxy in it it created the complete folder structure for us with all the required basic files then it says remove just like in it initialize a anible uh role for you using remove you can remove any roles that are available in your role path then you can do delete list search import install and setup we will go step by step and we will try to understand how to use anible Galaxy for all our
+10:41
+
+activities the very first thing that I'll do is okay abishek let's talk about the activity that you have mentioned one is how can I use the anible rules that are available in anable Galaxy let's take the same example and can you show us how can we use this Docker anible role that is in the Galaxy so very simple what you need to do okay the very first thing that you do is set up an account with anible Galaxy very simple to your top right side you have the login button once you click on the login button you will see a page which asks
+11:25
+
+you to authenticate you can use your GitHub account so when you use your iub account you will be signed in with your GitHub user which is what I have done I'm signed in with my GitHub user and once you signed in just like others in the anible Galaxy you also get your anible role name space which is just like your anible Galaxy account or your user space at this point of time I haven't published any roles here so it says roles will appear once imported you know once I publish any roles to the anable Galaxy it will be shown here at
+12:05
+
+this point of time I haven't published any if you look at the previous user from which I was using the docker anible role if you go to this user so you can see in this users's role name space there are multiple anible roles because this user has published and this particular role is downloaded by 40 three people this particular role is downloaded by 62 this is 248 and this is 1783 so it's almost like a community work where you are sharing your anible role with others perfect now our topic of interest
+12:45
+
+is Docker so first let's see how to install this role so I don't have anything I just have my previous anable playbooks and rules which we have written till day four now I'll implement the task where I will install and configure Docker on two of my manage notes which I have set up with passwordless authentication in day two so for that first thing that you do is go back to your anel Galaxy just copy this command here what does it say anible Galaxy rooll install this particular role and as soon as I do that it says
+13:30
+
+role installed you know basically I already have this role while I was doing the demo I have installed it so it says already installed now where does this role go so if you just do LS tilt a hidden folder called anible roles so you can see all the roles that you have installed so it says I have installed these three roles so this is the one that you should see when you run the command and where will you see in the home directory do anible folder which is a hidden folder and inside that you have roles perfect now I have this particular
+14:17
+
+thing which says the docker role is installed but abishek how do I use that role in the last class when we wrote our very first anible role you said in the first Playbook do yaml that is in the Playbook you just mention the reference and say roles as httpd and it understood that httpd is available in the same folder so it started using it there is no difference you can do the same thing where what I'll do is I'll just copy the same Playbook okay copy or let me write it so whm docker Playbook do yaml so I'll start with
+15:04
+
+three hyphens then I'll just say host all then I'll say become true or remote user root you can use anything then I'll say roles what was the name of the role we need to check that again just copy this one and and paste it here okay now let's save this file and run the command anible Playbook minus I inventory file followed by Docker Playbook do yaml and that's it you will see all the tasks that are involved if you go to the task. yaml or the main.
+16:00
+
+yaml you can see that it has so much code like almost 20 plus tasks here and you have additional yl files where you have setup dean. yaml which is specific like the task specific to Debian then you have task specific to Red Hat path specific to Docker compose so instead of writing this complicated anable Playbook what did I do is I just used the existing anible role in Galaxy and I have installed and configured Docker on my ec2 instances now you can simply log into this e to instance just for your verification and you can see that Docker
+16:42
+
+should be installed please try to do this activity uh you know it helps you a lot of times as a devops engineer writing and sible roles will take a lot of time for example kubernetes or database installation configuration you can use the Galaxy and reduce significant amount of time so let's do Docker and see perfect so Docker is installed and Docker user is created all the required things are set up using anible Galaxy if you want to try it out you can create Red Hat you can create Alpine and give it a try you will see that anable Galaxy
+17:25
+
+works because the tasks are written for different possibilities it is written for Debian it is written for red hat and also ubo perfect now okay abishek I understood half of it where I can use anible roles in the Galaxy but what if as a devops engineer I want to publish roles to this anible galaxy so in the last class we wrote this anible rule right we wrote the httpd now how do I publish this so very simple thing one thing that you have to understand is anible rules should always be put in GitHub and should be imported into the anable
+18:11
+
+Galaxy right same thing we did here also when we are using this anible rule for Docker the source code is pushed to GitHub pushed to a GitHub repository and this particular user has imported this GitHub repository we have to do exactly same thing so if you have a existing anable role first go to that folder httpd and what you need to do is in your GitHub create a new repository okay go to the home space and first create a new repository don't worry all these steps are also mentioned in the anible Z to Hero GitHub repository I have provided
+18:58
+
+the notes you can go to the repository and you can read through it and you can also execute or watch this video and execute so let's say dumy Rule and let's provide a description a dummy anible role for demo okay it's a public repository let's keep it and create the repository so I've created this repository now what I'll do is with within this folder okay I think I already have let me delete dogit because I have done the demo previously so what you need to do is first do the git in it okay I have initialized an empty G
+19:47
+
+repository now you can just copy the https URL you also have the commands here you can use the commands end of the day what I'm doing is I'm just pushing all the source code here to the GitHub repository that's it you have different ways to do it but I'm trying to explain the simple way now you will do the command get remote origin add this sorry you will do get remote add origin followed by this my bad okay now if you do get remote minus V perfect this is added now all that you need to do is just add stage the files now just
+20:39
+
+say get commit minus M initial files whatever you wouldd like to call right and now just push this get push origin main perfect now you should once you refresh you should see that your anible role is pushed onto the GitHub repository and here you will see all the dummy information and where is this getting populated from you can update this readme file so that you can write the appropriate things now I'm not spending time updating this but one thing that you should definitely do is update this meta folder and within the
+21:26
+
+meta folder update the main. jaml where you provide all the details like who is the author what is the description what is the company these details have to be definitely mentioned otherwise within your organization people will not understand why is this role written who has written it all this information in the meta yaml file is very very important to write now the only thing that is left is okay abishek the role is also publish to GitHub repository now how do I push it to anible Galaxy so for that you have
+22:03
+
+the command anible Galaxy import your GitHub username followed by the name of the repository dami roll right so it will throw the authentication error okay so you have done everything but still it is through throwing authentication error because the first thing that you have to do is you need to go to the anable Galaxy and if you go to the collection collection section you will find API token just load the token copy it and pass it to your anible Galaxy hyphen hyphen token and now you will see that your anible role will be published to Galaxy
+22:57
+
+and anybody can start using it there are ways to secure your token as well don't worry I will be showing it you can uh secure by adding it to a file you can also add it to your anable configuration but for now let's see now if I go to my roles if I go to my role name space abishek vamala see there is a role that we have published few seconds ago abishek has published dumy rooll now anybody can look into this documentation which I have not not updated as I mentioned you need to come here and update the readme file it's
+23:35
+
+very important like you have seen the previous rule that we have used for Docker installation this file was very very neatly updated see if you go here you can see that the main. yaml so the readme.md is updated accurately that's why it's reflected on the anable Galaxy as well but because I'm doing a demo I have not written that entire thing in your organization you have to write it very clearly and the installation step is anybody who wants to use it they can run this command and just like how we use
+24:11
+
+the docker role they can use this anible role which is a dummy role that we have written so this is how you write your own anible role and publish it or use existing anible roles from the anible Galaxy task like Docker and installation kubernetes installation E2 installation most of it will already be available in the anible Galaxy so this is the video for today I hope you have enjoyed it next videos are going to be even more interesting so please try to watch see you all in the next one take care bye-bye
+
 
 Day 6: Ansible Variables and Precedence
 
