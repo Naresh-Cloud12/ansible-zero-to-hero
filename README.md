@@ -204,6 +204,9 @@ Day 8: Error Handling in Ansible
 - Error handling techniques and best practices.
 - Demonstrating error handling in practical scenarios.
 
+the order of of execution of task in anible now this is very important to understand before we move towards  understanding error handling in anable 
+
+
 Day 9: Ansible Vault for Security
 
 - Understanding Ansible Vault and its role in securing sensitive data.
