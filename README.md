@@ -230,6 +230,11 @@ when output dot what is this output dot failed only when output do fail is true 
 
 you might have these kind of requirements from your client or the project team so you will use ignore errors to handle the errors...
 ---------------defining the failures--------------
+let me go to a ec2 instance let me use LS command on a non-existing file or a folder I will do LS abishek(name)or whatever u want he list so the error says cannot access abishek no such file or directory if I do LS on the root directory it will say cannot open directory because permission is denied so the ls command is the same here also I'm running the ls command on a folder or a file here also I'm running the ls command but on a different folder or a file the error is different here the error says no such file or directory here the error says permission denied in anible if you want to ignore a particular type of error okay both of these are errors because of the ls command but if you want to ignore a particular type of error you can use this syntax called failed when 
+
+![image](https://github.com/user-attachments/assets/43f4a884-31df-4516-9ae7-c48cedc5693b)
+
+you will register for the ls command you will simply register a variable to record the output of the ls command the output of this LS command is registered in this result variable and in the result variable which is a Json object so you will look out for a particular thing called as result.stdout you can say when the error is no such file or directory or just provide no such if you find anything like that in result.sdout you can ignore the failure and move to the next task so this is a special case of error handling if you are using ignore error as yes then all the errors will will be ignored if you want to handle only one particular type of error for this if you're using ignore error as yes it will ignore both of these errors for the no such file out directory as well as permission denied but if you're using failed when then you can ignore either this one or this one by registering the output and on the output verifying using the particular string that matches the std.out so this is another way of handling errors in ansible ![image](https://github.com/user-attachments/assets/30ba68f8-8208-4461-a14c-d716dddd9ed6)
 
 
 
