@@ -304,7 +304,9 @@ we have registered a variable that is result so we are storing the output of buc
  
 
 ![image](https://github.com/user-attachments/assets/27a9b0db-c2ab-42dd-bb8c-04dcb5547c05)
+i
 
+f you want to do with E2 instance what you can see simply do is create two E2 instances using policy as code attach a policy. Json or a policy as an instance profile to your E2 instances if you want to do it with IM users same thing try to attach a policy for your IM users in your organization
 
 
 Day 11: Network Automation using Ansible
